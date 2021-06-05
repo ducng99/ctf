@@ -20,6 +20,18 @@ Enter the details in and the flag appears.
 flag{KLY5FQ#Dibasicsodiumphosphatedihydrate000}
 ```
 
+## Challenge 4
+The page shows "EXTERMINATE CARLOS" with an image of a robot. I spent quite some time digging that image and got nothing out of it. Then after viewing the source code, I found
+```html
+<!-- Show only for admin -->
+<div id="admin-panel"></div>
+```
+So we need to somehow prove that we are admin. I tried setting cookie but that didn't work so I tried adding a parameter in URL `?admin=1` and a link to Admin panel shows up.<br/>
+The Admin panel page has Carlos and Bob names with delete buttons next to them. Exterminate Carlos and we got the flag
+```
+flag{R5D3SM#Heptadecan-9-yl0000000000000000000}
+```
+
 ## Challenge 6
 A [crackme](chal6/crackme) file was given. It is an executable file so I threw it in Ghidra to have a look.<br/>
 Here is the main function:<br/>
@@ -41,4 +53,11 @@ Passing that to the program and we got the flag:
 ./crackme FFFFBBBBBBBBPPPG
 [+] You win!
 [+] Here's your flag - Flag{B78YYB#N-ditetradecylacetamide00000000000}
+```
+
+## Challenge 10
+It's the same login form as [Challenge 3](#Challenge%203) with 1 additional step: modifying a cookie value.<br/>
+Change cookie `logged-in` from 0 to 1, then login with the same credentials will show the flag:
+```
+flag{3gSdzl#TromethamineHydrochloride000000000}
 ```
