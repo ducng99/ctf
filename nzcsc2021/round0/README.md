@@ -96,7 +96,7 @@ Passing that to the program and we got the flag:
 ```
 
 ## Challenge 10
-It's the same login form as [Challenge 3](#Challenge%203) with 1 additional step: modifying a cookie value.<br/>
+It's the same login form as [Challenge 3](#Challenge-3) with 1 additional step: modifying a cookie value.<br/>
 Change cookie `logged-in` from 0 to 1, then login with the same credentials will show the flag:
 ```
 flag{3gSdzl#TromethamineHydrochloride000000000}
