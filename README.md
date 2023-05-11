@@ -2,4 +2,4 @@
 
 All my writeups for almost all CTFs I have done are here.
 
-Status: None
+Status: *Nothing currently*
