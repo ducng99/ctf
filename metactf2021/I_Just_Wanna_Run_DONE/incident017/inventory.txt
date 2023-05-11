@@ -1,0 +1,27 @@
+original filepath
+
+included in zip:
+C:\share$\COPY.bat
+C:\share$\EXE.bat
+C:\share$\WMI.bat
+C:\share$\comps1.txt
+C:\share$\comps2.txt
+C:\share$\comps3.txt
+C:\share$\comps4.txt
+C:\share$\comps5.txt
+C:\share$\comps6.txt
+C:\share$\comps7.txt
+C:\share$\comps8.txt
+C:\share$\comps9.txt
+C:\share$\comps10.txt
+C:\share$\comps11.txt
+C:\share$\comps12.txt
+C:\share$\comps13.txt
+C:\share$\comps14.txt
+C:\share$\comps15.txt
+C:\share$\comps16.txt
+C:\share$\comps17.txt
+
+not included in zip
+C:\share$\evil.exe
+C:\share$\PsExec.exe
